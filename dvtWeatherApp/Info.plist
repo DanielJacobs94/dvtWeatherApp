@@ -39,6 +39,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>WeatherApp needs to access your location to show you the weather for your area.</string>
+	<key>NSLocationWhenInUseUsageDescription </key>
+	<string>WeatherApp needs to access your location to show you the weather for your area.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

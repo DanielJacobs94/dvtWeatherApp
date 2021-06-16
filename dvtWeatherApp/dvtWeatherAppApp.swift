@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct dvtWeatherAppApp: App {
+    
+    var defaults: WeatherAppDefaults
+    var mainViewModel: MainViewModel
+    
+    init() {
+        defaults = WeatherAppDefaults()
+        mainViewModel = MainViewModel(defaults: defaults)
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(defaults).environmentObject(mainViewModel)
         }
     }
 }

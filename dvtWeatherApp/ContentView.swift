@@ -8,9 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var mainViewModel: MainViewModel
+    
+    init() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        
+        appearance.largeTitleTextAttributes = [
+            .font : UIFont.systemFont(ofSize: 20),
+            NSAttributedString.Key.foregroundColor : UIColor.white
+        ]
+        
+        appearance.titleTextAttributes = [
+            .font : UIFont.systemFont(ofSize: 20),
+            NSAttributedString.Key.foregroundColor : UIColor.white
+        ]
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().standardAppearance = appearance
+        
+        UINavigationBar.appearance().tintColor = .white
+    }
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        NavigationView {
+            MainView(viewModel: mainViewModel)
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarBackButtonHidden(true)
+        }
     }
 }
 

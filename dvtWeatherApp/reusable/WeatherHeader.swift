@@ -19,21 +19,18 @@ struct WeatherHeader: View {
     var body: some View {
         
         GeometryReader { geo in
-            
-            VStack {
                 
-                ZStack(alignment: .center) {
-                    
-                    Image(viewModel?.backgroundImage ?? "")
-                        .resizable()
-                        .aspectRatio(9/8, contentMode: .fill)
-                        .frame(width: geo.size.width, alignment: .topLeading)
-                        .clipped()
-                    
-                    VStack(spacing: 10) {
-                        WeatherText(text: viewModel?.currentTemp ?? "", size: .header, alignment: .center)
-                        WeatherText(text: viewModel?.currentDescription ?? "", size: .title, alignment: .center)
-                    }
+            ZStack(alignment: .center) {
+                
+                Image(viewModel?.backgroundImage ?? "")
+                    .resizable()
+                    .aspectRatio(9/8, contentMode: .fill)
+                    .frame(width: geo.size.width, alignment: .topLeading)
+                    .clipped()
+                
+                VStack(spacing: 10) {
+                    WeatherText(text: viewModel?.currentTemp ?? "", size: .header, alignment: .center, bold: true)
+                    WeatherText(text: viewModel?.currentDescription ?? "", size: .title, alignment: .center, bold: true)
                 }
             }
         }

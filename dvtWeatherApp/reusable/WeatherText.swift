@@ -38,7 +38,7 @@ struct WeatherText: View {
     }
     
     enum TextSize: CGFloat {
-        case header = 48.0
+        case header = 56.0
         case subHeader = 32.0
         case title = 24.0
         case subTitle = 20.0

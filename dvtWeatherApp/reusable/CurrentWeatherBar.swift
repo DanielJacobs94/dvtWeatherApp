@@ -18,22 +18,25 @@ struct CurrentWeatherBar: View {
     
     var body: some View {
         
-        HStack {
-            VStack {
-                WeatherText(text: viewModel?.minTemp ?? "-", size: .regular, alignment: .leading, bold: true)
-                WeatherText(text: "min", size: .regular, alignment: .leading)
-            }
-            Spacer()
-            VStack {
-                WeatherText(text: viewModel?.currentTemp ?? "-", size: .regular, alignment: .center, bold: true)
-                WeatherText(text: "Current", size: .regular, alignment: .center)
-            }
-            Spacer()
-            VStack {
-                WeatherText(text: viewModel?.maxTemp ?? "-", size: .regular, alignment: .trailing, bold: true)
-                WeatherText(text: "max", size: .regular, alignment: .trailing)
-            }
-        }.padding([.leading, .trailing])
+        VStack {
+            HStack {
+                VStack {
+                    WeatherText(text: viewModel?.minTemp ?? "-", size: .regular, alignment: .leading, bold: true)
+                    WeatherText(text: "min", size: .regular, alignment: .leading)
+                }
+                Spacer()
+                VStack {
+                    WeatherText(text: viewModel?.currentTemp ?? "-", size: .regular, alignment: .center, bold: true)
+                    WeatherText(text: "Current", size: .regular, alignment: .center)
+                }
+                Spacer()
+                VStack {
+                    WeatherText(text: viewModel?.maxTemp ?? "-", size: .regular, alignment: .trailing, bold: true)
+                    WeatherText(text: "max", size: .regular, alignment: .trailing)
+                }
+            }.padding([.leading, .trailing])
+            Divider().background(Color.white).frame(height: 3)
+        }
     }
 }
 

@@ -12,45 +12,48 @@ struct MainView: View {
     
     var body: some View {
         
-        VStack {
+        GeometryReader { geo in
             
-            if (viewModel.isLoading) {
+            VStack(alignment: .center) {
                 
-                ProgressView().progressViewStyle(CircularProgressViewStyle())
-                
-            } else if (viewModel.isShowingLocationConfirm) {
-                
-                VStack(spacing: 20) {
-                    Text(":(").font(.system(size: 64))
-                    Text("WeatherApp needs your location to show you the weather information for your area.")
+                if (viewModel.isLoading) {
+                    Spacer()
+                    ProgressView().progressViewStyle(CircularProgressViewStyle())
+                        .frame(alignment: .center)
+                    Spacer()
                     
-                    Button(action: {
-                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-                    }, label: {
-                        Text("Open Settings")
-                    })
-                }.padding()
-                
-            } else {
-                
-                WeatherHeader(viewModel: viewModel.weatherHeader)
-                
-                CurrentWeatherBar(viewModel: viewModel.weatherBar)
-                
-                Divider().background(Color.white).frame(height: 3)
-                
-                ScrollView {
+                } else if (viewModel.isShowingLocationConfirm) {
                     
-                    LazyVStack {
+                    VStack(spacing: 20) {
+                        Text(":(").font(.system(size: 64))
+                        Text("WeatherApp needs your location to show you the weather information for your area.")
                         
-                        ForEach(viewModel.forecasts, id: \.id) { item in
-                            DayRow(forecastViewModel: item)
+                        Button(action: {
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        }, label: {
+                            Text("Open Settings")
+                        })
+                    }.padding()
+                    
+                } else {
+                    
+                    WeatherHeader(viewModel: viewModel.weatherHeader)
+                    
+                    CurrentWeatherBar(viewModel: viewModel.weatherBar)
+                    
+                    ScrollView {
+                        
+                        LazyVStack {
+                            
+                            ForEach(viewModel.forecasts, id: \.id) { item in
+                                DayRow(forecastViewModel: item)
+                            }
                         }
                     }
                 }
             }
-            
-        }.ignoresSafeArea(edges: .top)
+            .frame(width: geo.size.width, alignment: .center)
+        }.ignoresSafeArea(edges: [.top, .bottom])
         .background(viewModel.isLoading ? Color(.white) : viewModel.weatherHeader?.backgroundColor ?? Color(.white))
         .onAppear() {
             viewModel.startLocation()

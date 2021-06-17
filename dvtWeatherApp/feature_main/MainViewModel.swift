@@ -68,7 +68,16 @@ class MainViewModel : NSObject, ObservableObject, WeatherService {
             } else {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.startLocation()
+                    
+                    if self.locationStatus != .authorizedWhenInUse && self.locationStatus != .authorizedAlways {
+                        
+                        // TODO Ask the user for permission again
+                        self.isLoading = false
+                        self.isShowingLocationConfirm = true
+                    } else {
+                        
+                        self.startLocation()
+                    }
                 }
             }
         }

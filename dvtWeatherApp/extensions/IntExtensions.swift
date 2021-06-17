@@ -20,7 +20,7 @@ extension Int {
             // Rainy
             return "forest_rainy"
             
-        } else if (800...899).contains(self) {
+        } else if (801...899).contains(self) {
             // Cloudy
             return "forest_cloudy"
             
@@ -39,7 +39,7 @@ extension Int {
             // Rainy
             return Color.rainy
             
-        } else if (800...899).contains(self) {
+        } else if (801...899).contains(self) {
             // Cloudy
             return Color.cloudy
             
@@ -58,7 +58,7 @@ extension Int {
             // Rainy
             return "RAINY"
             
-        } else if (800...899).contains(self) {
+        } else if (801...899).contains(self) {
             // Cloudy
             return "CLOUDY"
             
@@ -77,7 +77,7 @@ extension Int {
             // Rainy
             return "rain"
             
-        } else if (800...899).contains(self) {
+        } else if (801...899).contains(self) {
             // Cloudy
             return "partlysunny"
             
